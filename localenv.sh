@@ -64,27 +64,6 @@ else echo "Drupal installation failed.."
 exit $?
 fi
 
-echo "Setting up httpd vhosts..."
-
-vhost="
-
-<VirtualHost *:80>
-    DocumentRoot /Applications/MAMP/htdocs/bline
-    ServerName bline.local
-</VirtualHost>
-"
-echo "$vhost" >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
-
-host="127.0.0.1   bline.local"
-
-#echo $sudoPW | sudo -S echo $host >> /etc/hosts
-
-if [ $? == 0 ]
-then echo "Created vhosts!"
-else echo "Vhost creation failed.."
-exit $?
-fi
-
 echo "Moving to bline folder..."
 
 cd /Applications/MAMP/htdocs/bline || exit
@@ -141,20 +120,19 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 echo $PATH
 echo "Done"
 
-echo "Enabling modules and bline child theme theme"
+#echo "Enabling modules and bline child theme theme"
 
-echo "Moving back to project root..."
+#echo "Moving back to project root..."
 
-`cd /Applications/MAMP/htdocs/bline || exit`
+#`cd /Applications/MAMP/htdocs/bline || exit`
 
-echo pwd
-vendor/bin/drush then bline -y \&\& drush en components unified_twig_ext -y
+#drush then bline -y \&\& drush en components unified_twig_ext -y
 
-if [ $? == 0 ]
-then echo "Theme and modules enabled!"
-else echo "Enabling modules failed.."
-exit $?
-fi
+#if [ $? == 0 ]
+#then echo "Theme and modules enabled!"
+#else echo "Enabling modules failed.."
+#exit $?
+#fi
 
 echo "Finished!!"
 
