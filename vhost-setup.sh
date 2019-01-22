@@ -5,7 +5,6 @@ vhost="
 <VirtualHost *:80>
     DocumentRoot /Applications/MAMP/htdocs/bline/web
     ServerName bline.test
-</VirtualHost>
 "
 echo "$vhost" >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
 
