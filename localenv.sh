@@ -147,7 +147,8 @@ echo "Moving back to project root..."
 
 `cd /Applications/MAMP/htdocs/bline || exit`
 
-./vendor/bin/drush then bline -y \&\& drush en components unified_twig_ext -y
+echo pwd
+vendor/bin/drush then bline -y \&\& drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
 then echo "Theme and modules enabled!"
