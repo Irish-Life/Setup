@@ -8,7 +8,7 @@ echo "Starting installation process.."
 
 echo "Installing Homebrew..."
 
-/usr/bin/ruby -e "$(sudo -u $user curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(sudo -u "$user" curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 if [ $? == 0 ]
 then echo "Homebrew installed!"
@@ -50,7 +50,7 @@ fi
 
 echo "Moving to htdocs..."
 
-`cd /Applications/MAMP/htdocs` || exit
+`cd /Applications/MAMP/htdocs || exit`
 
 echo "Done"
 
@@ -115,7 +115,7 @@ fi
 
 echo "Installing child theme..."
 
-cd /Applications/MAMP/htdocs/bline/web/themes/custom/bline
+`cd /Applications/MAMP/htdocs/bline/web/themes/custom/bline || exit`
 
 yarn
 
@@ -138,16 +138,16 @@ fi
 echo "Adding to path..."
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
-
+echo $PATH
 echo "Done"
 
 echo "Enabling modules and bline child theme theme"
 
 echo "Moving back to project root..."
 
-cd /Applications/MAMP/htdocs/bline || exit
+`cd /Applications/MAMP/htdocs/bline || exit`
 
-drush then bline -y \&\& drush en components unified_twig_ext -y
+./vendor/bin/drush then bline -y \&\& drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
 then echo "Theme and modules enabled!"
