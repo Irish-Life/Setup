@@ -84,7 +84,7 @@ cd /Applications/MAMP/htdocs/bline/web/themes/custom || exit
 
 git clone https://github.com/Irish-Life/bline.git
 
-cd bline
+cd bline || exit
 
 yarn
 
@@ -162,7 +162,7 @@ echo "Moving back to project root..."
 
 `cd /Applications/MAMP/htdocs/bline || exit`
 
-drush then bline -y && drush en components unified_twig_ext -y
+#drush then bline -y && drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
 then echo "Theme and modules enabled!"
