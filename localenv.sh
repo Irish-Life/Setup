@@ -122,6 +122,28 @@ export PATH="$HOME/drush:$PATH"
 echo $PATH
 echo "Done"
 
+echo "Configuring settings.php..."
+
+settings="
+\$databases['default']['default'] = array (
+  'database' => 'bline-test',
+  'username' => 'bline-test',
+  'password' => 'password',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);"
+
+echo "$settings" >> /Applications/MAMP/htdocs/bline/web/sites/default/settings.php
+
+if [ $? == 0 ]
+then echo "Settings configured!"
+else echo "Configuration failed.."
+exit $?
+fi
+
 echo "Enabling modules and bline child theme theme"
 
 echo "Moving back to project root..."

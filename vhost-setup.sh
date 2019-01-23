@@ -12,7 +12,7 @@ echo "Setting up /etc/hosts file..."
 
 host="127.0.0.1   bline.test"
 
-echo $host >> /etc/hosts
+echo "$host" >> /etc/hosts
 
 killall -HUP mDNSResponder
 
