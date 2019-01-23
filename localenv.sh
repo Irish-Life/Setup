@@ -118,23 +118,23 @@ fi
 
 echo "Adding to path..."
 
-export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$HOME/drush:$PATH"
 echo $PATH
 echo "Done"
 
-#echo "Enabling modules and bline child theme theme"
+echo "Enabling modules and bline child theme theme"
 
-#echo "Moving back to project root..."
+echo "Moving back to project root..."
 
-#`cd /Applications/MAMP/htdocs/bline || exit`
+`cd /Applications/MAMP/htdocs/bline || exit`
 
-#drush then bline -y \&\& drush en components unified_twig_ext -y
+drush then bline -y \&\& drush en components unified_twig_ext -y
 
-#if [ $? == 0 ]
-#then echo "Theme and modules enabled!"
-#else echo "Enabling modules failed.."
-#exit $?
-#fi
+if [ $? == 0 ]
+then echo "Theme and modules enabled!"
+else echo "Enabling modules failed.."
+exit $?
+fi
 
 echo "Finished!!"
 
