@@ -84,6 +84,10 @@ cd /Applications/MAMP/htdocs/bline/web/themes/custom || exit
 
 git clone https://github.com/Irish-Life/bline.git
 
+cd bline
+
+yarn
+
 # echo "Creating child theme..."
 
 # cd /Applications/MAMP/htdocs/bline/web/themes/contrib/emulsify || exit
