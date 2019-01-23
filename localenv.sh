@@ -76,29 +76,37 @@ else echo "Installation failed.."
 exit $?
 fi
 
-echo "Creating child theme..."
+echo "Cloning child theme..."
 
-cd /Applications/MAMP/htdocs/bline/web/themes/contrib/emulsify || exit
+mkdir /Applications/MAMP/htdocs/bline/web/themes/custom/
 
-php emulsify.php bline
+cd /Applications/MAMP/htdocs/bline/web/themes/custom || exit
 
-if [ $? == 0 ]
-then echo "Child theme created!"
-else echo "Child theme creation failed.."
-exit $?
-fi
+git clone https://github.com/Irish-Life/bline.git
 
-echo "Installing child theme..."
+# echo "Creating child theme..."
 
-`cd /Applications/MAMP/htdocs/bline/web/themes/custom/bline || exit`
+# cd /Applications/MAMP/htdocs/bline/web/themes/contrib/emulsify || exit
 
-yarn
+# php emulsify.php bline
 
-if [ $? == 0 ]
-then echo "Child theme installed!"
-else echo "Child theme installation failed.."
-exit $?
-fi
+# if [ $? == 0 ]
+# then echo "Child theme created!"
+# else echo "Child theme creation failed.."
+# exit $?
+# fi
+
+# echo "Installing child theme..."
+
+# `cd /Applications/MAMP/htdocs/bline/web/themes/custom/bline || exit`
+
+# yarn
+
+# if [ $? == 0 ]
+# then echo "Child theme installed!"
+# else echo "Child theme installation failed.."
+# exit $?
+# fi
 
 echo "Installing drush..."
 
