@@ -102,7 +102,7 @@ fi
 
 echo "Installing drush..."
 
-composer global require drush/drush:dev-master
+composer require drush/drush:dev-master
 
 curl -OL https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
 
