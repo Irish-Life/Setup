@@ -102,7 +102,7 @@ fi
 
 echo "Installing drush..."
 
-#composer global require drush/drush:dev-master
+composer global require drush/drush:dev-master
 
 curl -OL https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
 
@@ -128,7 +128,7 @@ echo "Moving back to project root..."
 
 `cd /Applications/MAMP/htdocs/bline || exit`
 
-drush then bline -y \&\& drush en components unified_twig_ext -y
+drush then bline -y && drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
 then echo "Theme and modules enabled!"
