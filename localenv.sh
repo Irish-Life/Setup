@@ -130,7 +130,7 @@ fi
 
 echo "Adding to path..."
 
-export PATH="$HOME/drush:$PATH"
+export PATH="$HOME/drush:/Applications/MAMP/Library/bin:$PATH"
 echo $PATH
 echo "Done"
 
@@ -162,7 +162,7 @@ echo "Moving back to project root..."
 
 `cd /Applications/MAMP/htdocs/bline || exit`
 
-#drush then bline -y && drush en components unified_twig_ext -y
+drush then bline -y && drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
 then echo "Theme and modules enabled!"
