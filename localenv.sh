@@ -132,7 +132,7 @@ fi
 
 echo "Adding to path..."
 
-export PATH="$HOME/drush:/Applications/MAMP/Library/bin:$PATH"
+eval `paths.sh`
 
 echo "Done"
 
