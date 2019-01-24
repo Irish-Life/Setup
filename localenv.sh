@@ -114,7 +114,7 @@ yarn
 
 echo "Installing drush..."
 
-`cd /Applications/MAMP/htdocs/bline || exit`
+cd /Applications/MAMP/htdocs/bline || exit
 pwd
 composer require drush/drush:dev-master
 
