@@ -114,6 +114,8 @@ yarn
 
 echo "Installing drush..."
 
+`cd /Applications/MAMP/htdocs/bline || exit`
+
 composer require drush/drush:dev-master
 
 curl -OL https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
@@ -131,7 +133,7 @@ fi
 echo "Adding to path..."
 
 export PATH="$HOME/drush:/Applications/MAMP/Library/bin:$PATH"
-echo $PATH
+
 echo "Done"
 
 echo "Configuring settings.php..."
