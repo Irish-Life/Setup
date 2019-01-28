@@ -46,7 +46,7 @@ fi
 
 echo "Moving to htdocs..."
 
-`cd /Applications/MAMP/htdocs || exit`
+cd /Applications/MAMP/htdocs || exit
 
 echo "Done"
 
@@ -112,11 +112,13 @@ yarn
 # exit $?
 # fi
 
+echo "Done"
+
 echo "Installing drush..."
 
 cd /Applications/MAMP/htdocs/bline || exit
-pwd
-composer require drush/drush:dev-master
+
+composer global require drush/drush:dev-master
 
 curl -OL https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
 
@@ -130,12 +132,6 @@ else echo "Installation failed.."
 exit $?
 fi
 
-echo "Adding to path..."
-
-eval `paths.sh`
-
-echo "Done"
-
 echo "Configuring settings.php..."
 
 settings="
@@ -144,7 +140,7 @@ settings="
   'username' => 'bline-test',
   'password' => 'password',
   'prefix' => '',
-  'host' => 'localhost',
+  'host' => '127.0.0.1',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
@@ -162,8 +158,8 @@ echo "Enabling modules and bline child theme theme"
 
 echo "Moving back to project root..."
 
-`cd /Applications/MAMP/htdocs/bline || exit`
-
+cd /Applications/MAMP/htdocs/bline || exit
+pwd
 drush then bline -y && drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
@@ -171,6 +167,7 @@ then echo "Theme and modules enabled!"
 else echo "Enabling modules failed.."
 exit $?
 fi
+
 
 echo "Finished!!"
 
