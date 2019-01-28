@@ -29,7 +29,7 @@ brew install composer
 
 if [ $? == 0 ]
 then echo "Composer installed!"
-else echo "Composer installation failed.." 
+else echo "Composer installation failed.."
 exit $?
 fi
 
@@ -88,30 +88,6 @@ cd bline || exit
 
 yarn
 
-# echo "Creating child theme..."
-
-# cd /Applications/MAMP/htdocs/bline/web/themes/contrib/emulsify || exit
-
-# php emulsify.php bline
-
-# if [ $? == 0 ]
-# then echo "Child theme created!"
-# else echo "Child theme creation failed.."
-# exit $?
-# fi
-
-# echo "Installing child theme..."
-
-# `cd /Applications/MAMP/htdocs/bline/web/themes/custom/bline || exit`
-
-# yarn
-
-# if [ $? == 0 ]
-# then echo "Child theme installed!"
-# else echo "Child theme installation failed.."
-# exit $?
-# fi
-
 echo "Done"
 
 echo "Installing drush..."
@@ -159,7 +135,7 @@ echo "Enabling modules and bline child theme theme"
 echo "Moving back to project root..."
 
 cd /Applications/MAMP/htdocs/bline || exit
-pwd
+
 drush then bline -y && drush en components unified_twig_ext -y
 
 if [ $? == 0 ]
