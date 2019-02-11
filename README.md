@@ -30,22 +30,41 @@ However it should be noted that this guide / these scripts are intended for use 
 * **Configure MAMP to use virtual hosts** - MAMP bundles the apache webserver which needs to be configured to use the virtual hosts module. This lets us serve multiple sites from the same IP address.
   Open /Applications/MAMP/conf/apache/httpd.conf - the main apache config file.
   Find and uncomment the line "Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf" by removing the leading #.
-  You may need to open this file will admin / sudo privileges.
+  You may need to open this file with admin / sudo privileges.
   
 ## Run the scripts
-The two scripts in this repo can now be executed in order to complete the installation procedure.
-First, run vhost-setup.sh with elevated privileges.
+The scripts in this repo can now be executed in order to complete the installation procedure.
+First, run paths.sh with elevated privileges. This is to add certain locations to the system $PATH so that they can be utilised during the installation process.
+
 From the terminal, run:
+
+```shell
+sudo bash paths.sh
+```
+
+Once that command completes, run the following command to refresh the current terminal window and pick up the new PATH:
+
+```shell
+sudo source ~/.bash_profile
+``` 
+
+
+Then, set up your virtual hosts. Run vhost-setup.sh with elevated privileges.
+From the terminal, run:
+
 ```shell
 sudo bash vhost-setup.sh
 ```
-Enter your password and wait for the script to finish. This should take less than a second if successful.
+
+Enter your password and a name for the site you want to create e.g. bline.local 
 
 Next execute the localenv.sh script **without** elevated privileges.
 From the terminal, run:
+
 ```shell
 bash localenv.sh
 ```
+
 This will begin the installation process including setting up the following:
 
 1. Homebrew - mac package manager
@@ -62,24 +81,7 @@ This script will take some time to install as it involves pulling in a lot of pa
 ## Finishing up
 Once that's all done, the last thing to do is to enable the theme and its dependant modules.
 
-Make sure your MAMP server is running and enter http://bline.test into your browsers address bar.
 
-At this point, if all has gone well, you should be presented with the standard Drupal installation screen.
-
-Follow the prompts on screen specifying the database name and user etc. from earlier.
-
-When entering your Drupal username, the convention is to use "admin".
-
-Once that installs you should end up on the home screen for default drupal. Click the "Extend" button in the top navigation. This will present you with a list of modules installed on the site.
-Scroll down until you see "Drupal Pattern Lab" and check the "Unified Twig Extensions" checkbox if it isn't already checked.
-
-Scroll a little further and check the "Other" > "Component Libraries" checkbox. Then click the "Install" button at the bottom of the page.
-
-Next, click into the "Appearance" button in the top navigation. This will show you all currently installed themes on the site.
-
-Scroll down to see the "bline" theme.
-
-Click the button to "Install and Set as Default"
 
 Congratulations! You've built your local dev environment.
 

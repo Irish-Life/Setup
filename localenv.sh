@@ -108,21 +108,34 @@ else echo "Installation failed.."
 exit $?
 fi
 
-echo "Configuring settings.php..."
+echo "Configuring drupal..."
 
-settings="
-\$databases['default']['default'] = array (
-  'database' => 'bline-test',
-  'username' => 'bline-test',
-  'password' => 'password',
-  'prefix' => '',
-  'host' => '127.0.0.1',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);"
+read -p "Enter your database username: " dbusername
 
-echo "$settings" >> /Applications/MAMP/htdocs/bline/web/sites/default/settings.php
+read -p "And the password: " dbpword
+
+read -p "And the database name" dbname
+
+read -p "And the name of the site (Note, this should be the same value as specified earlier when setting up vhosts): " sitename
+
+drush si standard --db-url=mysql://$dbusername:dbpword@127.0.0.1/$dbname --site-name=$sitename
+
+
+# echo "Configuring settings.php..."
+
+# settings="
+# \$databases['default']['default'] = array (
+#   'database' => 'bline-test',
+#   'username' => 'bline-test',
+#   'password' => 'password',
+#   'prefix' => '',
+#   'host' => '127.0.0.1',
+#   'port' => '3306',
+#   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+#   'driver' => 'mysql',
+# );"
+
+# echo "$settings" >> /Applications/MAMP/htdocs/bline/web/sites/default/settings.php
 
 if [ $? == 0 ]
 then echo "Settings configured!"
