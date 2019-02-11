@@ -118,6 +118,8 @@ read -p "And the database name: " dbname
 
 read -p "And the name of the site (Note, this should be the same value as specified earlier when setting up vhosts): " sitename
 
+cd /Applications/MAMP/htdocs/bline || exit
+pwd
 drush si standard --db-url=mysql://$dbusername:$dbpword@127.0.0.1/$dbname --site-name=$sitename
 
 
