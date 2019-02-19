@@ -118,7 +118,6 @@ read -p "And the password: " dbpword
 
 read -p "And the database name: " dbname
 
-read -p "And the name of the site (Note, this should be the same value as specified earlier when setting up vhosts): " sitename
 
 cd /Applications/MAMP/htdocs/$site || exit
 
@@ -139,7 +138,6 @@ settings="
 
 echo "$settings" >> /Applications/MAMP/htdocs/$site/web/sites/default/settings.php
 
-#drush si standard --db-url=mysql://$dbusername:$dbpword@127.0.0.1/$dbname --site-name=$sitename
 
 if [ $? == 0 ]
 then echo "Settings configured!"
