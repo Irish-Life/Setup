@@ -52,7 +52,9 @@ echo "Done"
 
 echo "Preparing to create Drupal 8 installation..."
 
-composer create-project drupal-composer/drupal-project:8.x-dev /Applications/MAMP/htdocs/bline --no-interaction
+read -p "What will you call your site? " site
+
+composer create-project drupal-composer/drupal-project:8.x-dev /Applications/MAMP/htdocs/$site --no-interaction
 
 if [ $? == 0 ]
 then echo "Drupal installed!"
@@ -60,9 +62,9 @@ else echo "Drupal installation failed.."
 exit $?
 fi
 
-echo "Moving to bline folder..."
+echo "Moving to $site folder..."
 
-cd /Applications/MAMP/htdocs/bline || exit
+cd /Applications/MAMP/htdocs/$site || exit
 
 echo "Done"
 
@@ -78,9 +80,9 @@ fi
 
 echo "Cloning child theme..."
 
-mkdir /Applications/MAMP/htdocs/bline/web/themes/custom/
+mkdir /Applications/MAMP/htdocs/$site/web/themes/custom/
 
-cd /Applications/MAMP/htdocs/bline/web/themes/custom || exit
+cd /Applications/MAMP/htdocs/$site/web/themes/custom || exit
 
 git clone https://github.com/Irish-Life/bline.git
 
@@ -92,7 +94,7 @@ echo "Done"
 
 echo "Installing drush..."
 
-cd /Applications/MAMP/htdocs/bline || exit
+cd /Applications/MAMP/htdocs/$site || exit
 
 composer global require drush/drush:dev-master
 
@@ -118,26 +120,26 @@ read -p "And the database name: " dbname
 
 read -p "And the name of the site (Note, this should be the same value as specified earlier when setting up vhosts): " sitename
 
-cd /Applications/MAMP/htdocs/bline || exit
-pwd
-drush si standard --db-url=mysql://$dbusername:$dbpword@127.0.0.1/$dbname --site-name=$sitename
+cd /Applications/MAMP/htdocs/$site || exit
+
+echo "Configuring settings.php..."
+
+settings="
+ \$databases['default']['default'] = array (
+   'database' => '$dbname',
+   'username' => '$dbusername',
+   'password' => '$dbpword',
+   'prefix' => '',
+   'host' => '127.0.0.1',
+   'port' => '3306',
+   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+   'driver' => 'mysql',
+ );"
 
 
-# echo "Configuring settings.php..."
+echo "$settings" >> /Applications/MAMP/htdocs/$site/web/sites/default/settings.php
 
-# settings="
-# \$databases['default']['default'] = array (
-#   'database' => 'bline-test',
-#   'username' => 'bline-test',
-#   'password' => 'password',
-#   'prefix' => '',
-#   'host' => '127.0.0.1',
-#   'port' => '3306',
-#   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-#   'driver' => 'mysql',
-# );"
-
-# echo "$settings" >> /Applications/MAMP/htdocs/bline/web/sites/default/settings.php
+#drush si standard --db-url=mysql://$dbusername:$dbpword@127.0.0.1/$dbname --site-name=$sitename
 
 if [ $? == 0 ]
 then echo "Settings configured!"
@@ -149,7 +151,7 @@ echo "Enabling modules and bline child theme theme"
 
 echo "Moving back to project root..."
 
-cd /Applications/MAMP/htdocs/bline || exit
+cd /Applications/MAMP/htdocs/$site || exit
 
 drush then bline -y && drush en components unified_twig_ext -y
 
