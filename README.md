@@ -45,7 +45,7 @@ sudo bash paths.sh
 Once that command completes, run the following command to refresh the current terminal window and pick up the new PATH:
 
 ```shell
-sudo source ~/.bash_profile
+source ~/.bash_profile
 ``` 
 
 
