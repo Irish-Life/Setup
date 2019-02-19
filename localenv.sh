@@ -52,7 +52,7 @@ echo "Done"
 
 echo "Preparing to create Drupal 8 installation..."
 
-composer create-project drupal-composer/drupal-project:8.x-dev /Applications/MAMP/htdocs/bline --stability dev --no-interaction --no-install
+composer create-project drupal-composer/drupal-project:8.x-dev /Applications/MAMP/htdocs/bline --no-interaction
 
 if [ $? == 0 ]
 then echo "Drupal installed!"
