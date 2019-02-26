@@ -5,3 +5,4 @@ read -p "What is the name of the site (Note, this should be the same value as sp
 cd /Applications/MAMP/htdocs/$sitename || exit
 
 #drush si standard --site-name=$sitename
+#wdkfjha;skdfh;askdhf
