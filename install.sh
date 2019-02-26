@@ -6,4 +6,6 @@ cd /Applications/MAMP/htdocs/$sitename || exit
 
 #drush si standard --site-name=$sitename
 #this is stephens bit
-#test comment from Conor
+
+#conor testing
+#more test comment
