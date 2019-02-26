@@ -8,4 +8,4 @@ cd /Applications/MAMP/htdocs/$sitename || exit
 #this is stephens bit
 
 #conor testing
-#more test comment
+#more test commentss
